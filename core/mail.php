@@ -1,7 +1,7 @@
 <?php
 // читать json файл
-$json = file_get_contents('../goods.json');
-$json = json_decode($json, true);
+// $json = file_get_contents('../goods.json');
+// $json = json_decode($json, true);
 
 //письмо
 $message = '';
@@ -23,10 +23,11 @@ $message .='Всего: '.$sum;
 
 //print_r($message);
 
-$to = 'your@email'.','; //не забудь поменять!
+$to = 'dzub_1996@mail.ru'; //не забудь поменять!
 $to .=$_POST['email'];
 $spectext = '<!DOCTYPE HTML><html><head><title>Заказ</title></head><body>';
 $headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'From: shop <info@address.com>' . "\r\n";
 $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
 $m = mail($to, 'Заказ в магазине', $spectext.$message.'</body></html>', $headers);
