@@ -1,8 +1,6 @@
-var cart = {}; // корзина
+var cart = {};
 
 function init() {
-    //вычитуем файл goods.json
-    // $.getJSON("goods.json", goodsOut);
     $.post(
         "admin/core.php",
         {
@@ -13,31 +11,20 @@ function init() {
 }
 
 function goodsOut(data) {
-    // вывод на страницу
     data=JSON.parse(data);
     console.log(data);
     var out='';
     var out2='';
-    // out2 +='<div class="catalog">';
-    // out2 +='<div class="catalog">';
     out2 +=`<button class="search">6ГБ видеопамяти</button>`;
     out2 +=`<button class="search2">8ГБ видеопамяти</button>`;
     out2 +=`<button class="search3">NVIDIA</button>`;
     out2 +=`<button class="search4">AMD</button>`;
-    // out2 +='</div>';
     $('.goods-out2').html(out2);
     $('.search').on('click', search);
     $('.search2').on('click', search2);
     $('.search3').on('click', search3);
     $('.search4').on('click', search4);
     for (var key in data) {
-        // out +='<div class="cart">';
-        // out +='<p class="name">'+data[key].chipset+'</p>';
-        // out += '<img src="images/'+data[key].img+'" alt="">';
-        // out +='<div class="cost">'+data[key].cost+'</div>';
-        // out +='<button class="add-to-cart">Купить</button>';
-        // out +='</div>';
-        //---------
         out +='<div class="cart">';
         out +=`<p class="name">${data[key].name}</p>`;
         out +=`<img src="images/${data[key].img}" alt="">`;
@@ -50,7 +37,6 @@ function goodsOut(data) {
 }
 
 function search() {
-    // поиск
     $.post(
         "admin/core.php",
         {
@@ -61,7 +47,6 @@ function search() {
 }
 
 function search2() {
-    // поиск
     $.post(
         "admin/core.php",
         {
@@ -72,7 +57,6 @@ function search2() {
 }
 
 function search3() {
-    // поиск
     $.post(
         "admin/core.php",
         {
@@ -83,7 +67,6 @@ function search3() {
 }
 
 function search4() {
-    // поиск
     $.post(
         "admin/core.php",
         {
@@ -94,18 +77,14 @@ function search4() {
 }
 
 function search6gb(data) {
-    //запросики
     data=JSON.parse(data);
     console.log(data);
     var out='';
     var out2='';
-    // out2 +='<div class="catalog">';
-    // out2 +='<div class="catalog">';
     out2 +=`<button class="search">6ГБ видеопамяти</button>`;
     out2 +=`<button class="search2">8ГБ видеопамяти</button>`;
     out2 +=`<button class="search3">NVIDIA</button>`;
     out2 +=`<button class="search4">AMD</button>`;
-    // out2 +='</div>';
     $('.goods-out2').html(out2);
     $('.search').on('click', search);
     $('.search2').on('click', search2);
@@ -124,17 +103,14 @@ function search6gb(data) {
 }
 
 function search8gb(data) {
-    //запросики
     data=JSON.parse(data);
     console.log(data);
     var out='';
     var out2='';
-    // out2 +='<div class="catalog">';
     out2 +=`<button class="search">6ГБ видеопамяти</button>`;
     out2 +=`<button class="search2">8ГБ видеопамяти</button>`;
     out2 +=`<button class="search3">NVIDIA</button>`;
     out2 +=`<button class="search4">AMD</button>`;
-    // out2 +='</div>';
     $('.goods-out2').html(out2);
     $('.search').on('click', search);
     $('.search2').on('click', search2);
@@ -153,18 +129,14 @@ function search8gb(data) {
 }
 
 function searchNVIDIA(data) {
-    //запросики
     data=JSON.parse(data);
     console.log(data);
     var out='';
     var out2='';
-    // out2 +='<div class="catalog">';
-    // out2 +='<div class="catalog">';
     out2 +=`<button class="search">6ГБ видеопамяти</button>`;
     out2 +=`<button class="search2">8ГБ видеопамяти</button>`;
     out2 +=`<button class="search3">NVIDIA</button>`;
     out2 +=`<button class="search4">AMD</button>`;
-    // out2 +='</div>';
     $('.goods-out2').html(out2);
     $('.search').on('click', search);
     $('.search2').on('click', search2);
@@ -183,18 +155,14 @@ function searchNVIDIA(data) {
 }
 
 function searchAMD(data) {
-    //запросики
     data=JSON.parse(data);
     console.log(data);
     var out='';
     var out2='';
-    // out2 +='<div class="catalog">';
-    // out2 +='<div class="catalog">';
     out2 +=`<button class="search">6ГБ видеопамяти</button>`;
     out2 +=`<button class="search2">8ГБ видеопамяти</button>`;
     out2 +=`<button class="search3">NVIDIA</button>`;
     out2 +=`<button class="search4">AMD</button>`;
-    // out2 +='</div>';
     $('.goods-out2').html(out2);
     $('.search').on('click', search);
     $('.search2').on('click', search2);
@@ -213,9 +181,7 @@ function searchAMD(data) {
 }
 
 function addToCart() {
-    //добавляем товар в корзину
     var id = $(this).attr('data-id');
-    // console.log(id);
     if (cart[id]==undefined) {
         cart[id] = 1; //если в корзине нет товара - делаем равным 1
     }
@@ -227,12 +193,10 @@ function addToCart() {
 }
 
 function saveCart() {
-    //сохраняю корзину в localStorage
     localStorage.setItem('cart', JSON.stringify(cart)); //корзину в строку
 }
 
 function showMiniCart() {
-    //показываю мини корзину
     var out="";
     for (var key in cart) {
         out += key +' --- '+ cart[key]+'<br>';
@@ -241,9 +205,7 @@ function showMiniCart() {
 }
 
 function loadCart() {
-    //проверяю есть ли в localStorage запись cart
     if (localStorage.getItem('cart')) {
-        // если есть - расширфровываю и записываю в переменную cart
         cart = JSON.parse(localStorage.getItem('cart'));
         showMiniCart();
     }
