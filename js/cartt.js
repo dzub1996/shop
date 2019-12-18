@@ -17,23 +17,6 @@ function showCart() {
         $('.main-cart').html('Корзина пуста!');
     }
     else {
-        // cart=JSON.parse(cart);
-        // console.log(cart);
-        // var out='';
-        // for (var id in cart) {
-        //             out += `<button data-id="${id}" class="del-goods">x</button>`;
-        //             out += `<img src="images\\${cart[id].img}">`;
-        //             out += ` ${cart[id].name  }`;
-        //             out += `  <button data-id="${cart[key].name}" class="minus-goods">-</button>  `;
-        //             out += ` ${cart[key].name}  `;
-        //             out += `  <button data-id="${cart[key].name}" class="plus-goods">+</button>  `;
-        //             out += cart[key].name*cart[key].price;
-        //             out += '<br>';
-        //         }
-        //     $('.main-cart').html(out);
-        //     $('.del-goods').on('click', delGoods);
-        //     $('.plus-goods').on('click', plusGoods);
-        //     $('.minus-goods').on('click', minusGoods);
         $.post(
             "admin/core.php",
             {
@@ -41,25 +24,6 @@ function showCart() {
             },
             goodsOut
         )
-        
-        // $.getJSON('goods.json', function (data) {
-        //     var goods = data;
-        //     var out = '';
-        //     for (var id in cart) {
-        //         out += `<button data-id="${id}" class="del-goods">x</button>`;
-        //         out += `<img src="images\\${goods[id].img}">`;
-        //         out += ` ${goods[id].name  }`;
-        //         out += `  <button data-id="${id}" class="minus-goods">-</button>  `;
-        //         out += ` ${cart[id]}  `;
-        //         out += `  <button data-id="${id}" class="plus-goods">+</button>  `;
-        //         out += cart[id]*goods[id].cost;
-        //         out += '<br>';
-        //     }
-        // $('.main-cart').html(out);
-        // $('.del-goods').on('click', delGoods);
-        // $('.plus-goods').on('click', plusGoods);
-        // $('.minus-goods').on('click', minusGoods);
-        //  });
     }
 }
 function goodsOut(data) {
