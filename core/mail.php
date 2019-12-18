@@ -1,9 +1,5 @@
 <?php
-// читать json файл
-// $json = file_get_contents('../goods.json');
-// $json = json_decode($json, true);
 
-//письмо
 $message = '';
 $message .= '<h1>Заказ в магазине</h1>';
 $message .='<p>Телефон: '.$_POST['ephone'].'</p>';
@@ -21,9 +17,8 @@ foreach ($cart as $id=>$count) {
 }
 $message .='Всего: '.$sum;
 
-//print_r($message);
 
-$to = 'dzub_1996@mail.ru'; //не забудь поменять!
+$to = 'dzub_1996@mail.ru';
 $to .=$_POST['email'];
 $spectext = '<!DOCTYPE HTML><html><head><title>Заказ</title></head><body>';
 $headers  = 'MIME-Version: 1.0' . "\r\n";
